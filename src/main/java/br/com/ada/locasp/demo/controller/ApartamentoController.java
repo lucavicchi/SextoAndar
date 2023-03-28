@@ -36,7 +36,7 @@ public class ApartamentoController {
                 .status(dto.getStatus())
                 .build();
         return apartamentoService.save(apartamento);
-
+    }
         //TODO entender erros e corrigir
         @PutMapping("{id}")
         public Apartamento update(@PathVariable Long id, @RequestBody ApartamentoSaveDTO dto){
