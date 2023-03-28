@@ -1,42 +1,47 @@
 package br.com.ada.locasp.demo.service;
 
 import br.com.ada.locasp.demo.domain.Apartamento;
+import br.com.ada.locasp.demo.exceptions.ApartamentoNotFoundException;
+import br.com.ada.locasp.demo.repository.ApartamentoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ApartamentoServiceImpl implements ApartamentoService {
 
-    private List<Apartamento> apartamentos = new ArrayList<>();
-
-    public List<Apartamento> list(){
-        return apartamentos;
+    private final ApartamentoRepository repository;
+    public List<Apartamento> list() {
+        return (List<Apartamento>) repository.findAll();
     }
 
     @Override
     public Apartamento save(Apartamento apartamento) {
-        apartamento.setId((long) apartamentos.size());
-        apartamentos.add(apartamento);
-        return apartamento;
+        return repository.save(apartamento);
     }
 
     @Override
     public Apartamento findById(Long id){
-        return apartamentos.stream().filter(apartamento -> apartamento.getId() == id).findFirst().get();
+        return repository.findById(id).orElseThrow(ApartamentoNotFoundException::new);
     }
 
     @Override
     public Apartamento update(Long id, Apartamento apartamento){
-        apartamento.setId(id);
-        int index = apartamentos.indexOf(apartamento);
-        apartamentos.set(index, apartamento);
-        return apartamento;
+        if (repository.existsById(id)) {
+            apartamento.setId(id);
+            return repository.save(apartamento);
+        }
+        throw new ApartamentoNotFoundException();
     }
 
     @Override
     public void delete(Long id){
-        apartamentos.removeIf(apartamento -> apartamento.getId() == id);
+        if (!repository.existsById(id)) {
+            throw new ApartamentoNotFoundException();
+        }
+        repository.deleteById(id);
     }
 }
