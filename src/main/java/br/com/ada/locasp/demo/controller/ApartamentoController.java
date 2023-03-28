@@ -6,7 +6,6 @@ import br.com.ada.locasp.demo.service.ApartamentoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,20 +36,18 @@ public class ApartamentoController {
                 .build();
         return apartamentoService.save(apartamento);
     }
-        //TODO entender erros e corrigir
-        @PutMapping("{id}")
-        public Apartamento update(@PathVariable Long id, @RequestBody ApartamentoSaveDTO dto){
-            Apartamento apartamento = Apartamento.builder()
-                    .numero(dto.getNumero())
-                    .status(dto.getStatus())
-                    .build();
-            return apartamentoService.update(id, apartamento);
-        }
 
-        //TODO entender erros e corrigir
-        @DeleteMapping("{id}")
-        public void delete(@PathVariable Long id){
-            apartamentoService.delete(id);
-        }
+    @PutMapping("{id}")
+    public Apartamento update(@PathVariable Long id, @RequestBody ApartamentoSaveDTO dto) {
+        Apartamento apartamento = Apartamento.builder()
+                .numero(dto.getNumero())
+                .status(dto.getStatus())
+                .build();
+        return apartamentoService.update(id, apartamento);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) {
+        apartamentoService.delete(id);
     }
 }
