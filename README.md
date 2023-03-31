@@ -1,4 +1,4 @@
-**Projeto Locadora SextoAndar **
+**Projeto Locadora SextoAndar**
 
 **Problemática:**
 São Paulo apresenta diversos desafios para quem precisa se deslocar pela cidade diariamente. Com o trânsito intenso e caótico em alguns horários, os deslocamentos podem se tornar mais demorados e custosos, afetando a qualidade de vida dos cidadãos. Além disso, a extensa malha viária e a variedade de rotas disponíveis dificultam a escolha do melhor trajeto. Além disso, a poluição gerada pelos veículos em circulação afeta a saúde pública e o meio ambiente.
