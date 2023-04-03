@@ -30,7 +30,7 @@ public class PredioServiceImpl implements PredioService {
         PredioSaveDTO response = restTemplate.getForObject(url, PredioSaveDTO.class);
         Endereco endereco = new Endereco();
         endereco.setCep(response.getCep());
-        endereco.setLogradouro(response.getAddress() + " " + response.getDistrict() + " " + response.getCity());
+        endereco.setLogradouro(response.getEndereco().getCep());
         predio.setEndereco(endereco);
         return repository.save(predio);
     }

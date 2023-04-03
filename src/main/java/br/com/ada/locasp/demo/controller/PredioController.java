@@ -36,7 +36,6 @@ public class PredioController {
     public Predio save(@Valid @RequestBody PredioListDTO dto) {
         Predio predio = predioMapper.predioSaveDTOToPredio(dto);
         var endereco = new Endereco();
-        endereco.setCep(dto.getCep());
         predio.setEndereco(endereco);
         return predioService.save(predio);
     }

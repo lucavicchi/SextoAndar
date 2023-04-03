@@ -1,6 +1,7 @@
 package br.com.ada.locasp.demo.dto;
 
 import br.com.ada.locasp.demo.domain.ApartamentoStatus;
+import br.com.ada.locasp.demo.domain.Endereco;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -17,4 +18,7 @@ public class PredioSaveDTO {
     @NotBlank
     @Pattern(regexp = "[\\d]{5}-[\\d]{3}", message = "CEP invalido")
     private String cep;
+
+    @NotBlank
+    private Endereco endereco;
 }
