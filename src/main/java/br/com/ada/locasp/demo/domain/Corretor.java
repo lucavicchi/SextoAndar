@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -38,4 +39,7 @@ public class Corretor {
     public int hashCode(){
         return Objects.hash(id);
     }
+
+    @OneToMany(mappedBy = "apartamento")
+    private List<Apartamento> apartamentos;
 }

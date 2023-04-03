@@ -3,6 +3,7 @@ package br.com.ada.locasp.demo.config;
 import br.com.ada.locasp.demo.dto.ErrorDTO;
 import br.com.ada.locasp.demo.exceptions.ApartamentoNotFoundException;
 import br.com.ada.locasp.demo.exceptions.CorretorNotFoundException;
+import br.com.ada.locasp.demo.exceptions.PredioNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -29,7 +30,7 @@ public class HandlerException {
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(ApartamentoNotFoundException.class)
+    @ExceptionHandler({ApartamentoNotFoundException.class, PredioNotFoundException.class, CorretorNotFoundException.class})
     public ErrorDTO handlerApartamentoNotFound(ApartamentoNotFoundException ex) {
         return ErrorDTO.builder().message(ex.getMessage()).build();
     }
