@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("apartamento")
+@RequestMapping("predio")
 @RestController
 public class PredioController {
 
