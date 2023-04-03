@@ -1,5 +1,6 @@
 package br.com.ada.locasp.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -12,9 +13,10 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Apartamento {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NotBlank
     private Long id;
 
@@ -29,6 +31,8 @@ public class Apartamento {
     @Enumerated(EnumType.STRING)
     private ApartamentoStatus status;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Predio predio;
     @Override
     public boolean equals(Object o){
         if (this == o) return true;

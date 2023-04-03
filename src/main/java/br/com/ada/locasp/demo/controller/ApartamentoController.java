@@ -2,6 +2,7 @@ package br.com.ada.locasp.demo.controller;
 
 import br.com.ada.locasp.demo.domain.Apartamento;
 import br.com.ada.locasp.demo.dto.ApartamentoSaveDTO;
+import br.com.ada.locasp.demo.mapper.ApartamentoMapper;
 import br.com.ada.locasp.demo.service.ApartamentoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ApartamentoController {
 
     private final ApartamentoService apartamentoService;
+    private final ApartamentoMapper mapper;
 
     @GetMapping
     public List<Apartamento> list() {

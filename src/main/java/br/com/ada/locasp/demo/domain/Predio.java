@@ -1,5 +1,6 @@
 package br.com.ada.locasp.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,5 +23,6 @@ public class Predio {
     private Endereco endereco;
 
     @OneToMany(mappedBy = "apartamento")
+    @JsonIgnoreProperties("predio")
     private List<Apartamento> apartamentos;
 }

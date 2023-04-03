@@ -1,6 +1,9 @@
 package br.com.ada.locasp.demo.controller;
 
+import br.com.ada.locasp.demo.domain.Endereco;
 import br.com.ada.locasp.demo.domain.Predio;
+import br.com.ada.locasp.demo.dto.PredioListDTO;
+import br.com.ada.locasp.demo.mapper.PredioMapper;
 import br.com.ada.locasp.demo.service.PredioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +18,11 @@ import java.util.List;
 public class PredioController {
 
     private final PredioService predioService;
+    private final PredioMapper predioMapper;
 
     @GetMapping
     public List<Predio> list() {
+
         return predioService.list();
     }
 
@@ -29,9 +34,10 @@ public class PredioController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Predio save(@Valid @RequestBody PredioListDTO dto) {
-        Predio predio = Predio.builder()
-                .numero(dto.getNumero())
-                .build();
+        Predio predio = predioMapper.predioSaveDTOToPredio(dto);
+        var endereco = new Endereco();
+        endereco.setCep(dto.getCep());
+        predio.setEndereco(endereco);
         return predioService.save(predio);
     }
 

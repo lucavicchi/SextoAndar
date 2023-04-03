@@ -1,6 +1,8 @@
 package br.com.ada.locasp.demo.service;
 
+import br.com.ada.locasp.demo.domain.Endereco;
 import br.com.ada.locasp.demo.domain.Predio;
+import br.com.ada.locasp.demo.dto.PredioSaveDTO;
 import br.com.ada.locasp.demo.exceptions.ApartamentoNotFoundException;
 import br.com.ada.locasp.demo.exceptions.PredioNotFoundException;
 import br.com.ada.locasp.demo.repository.PredioRepository;
@@ -25,7 +27,11 @@ public class PredioServiceImpl implements PredioService {
     @Override
     public Predio save(Predio predio) {
         String url = "https://cdn.apicep.com/file/apicep/" + predio.getEndereco().getCep() + ".json";
-
+        PredioSaveDTO response = restTemplate.getForObject(url, PredioSaveDTO.class);
+        Endereco endereco = new Endereco();
+        endereco.setCep(response.getCep());
+        endereco.setLogradouro(response.getAddress() + " " + response.getDistrict() + " " + response.getCity());
+        predio.setEndereco(endereco);
         return repository.save(predio);
     }
 
