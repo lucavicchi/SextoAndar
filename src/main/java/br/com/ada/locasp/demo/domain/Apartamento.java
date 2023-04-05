@@ -17,7 +17,6 @@ import java.util.Objects;
 public class Apartamento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @NotBlank
     private Long id;
 
     @NotBlank
@@ -33,6 +32,10 @@ public class Apartamento {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Predio predio;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Corretor corretor;
+
     @Override
     public boolean equals(Object o){
         if (this == o) return true;

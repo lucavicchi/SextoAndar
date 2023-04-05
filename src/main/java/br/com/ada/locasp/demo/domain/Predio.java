@@ -22,7 +22,7 @@ public class Predio {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "apartamento")
+    @OneToMany(mappedBy = "predio")
     @JsonIgnoreProperties("predio")
     private List<Apartamento> apartamentos;
 }

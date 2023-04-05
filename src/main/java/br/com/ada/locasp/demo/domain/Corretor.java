@@ -1,5 +1,6 @@
 package br.com.ada.locasp.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -25,6 +26,7 @@ public class Corretor {
     @NotBlank
     private String creci;
 
-    @OneToMany(mappedBy = "apartamento")
+    @OneToMany(mappedBy = "corretor")
+    @JsonIgnoreProperties("corretor")
     private List<Apartamento> apartamentos;
 }
