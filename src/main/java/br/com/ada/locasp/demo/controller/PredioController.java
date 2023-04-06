@@ -3,6 +3,7 @@ package br.com.ada.locasp.demo.controller;
 import br.com.ada.locasp.demo.domain.Endereco;
 import br.com.ada.locasp.demo.domain.Predio;
 import br.com.ada.locasp.demo.dto.PredioListDTO;
+import br.com.ada.locasp.demo.dto.PredioSaveDTO;
 import br.com.ada.locasp.demo.mapper.PredioMapper;
 import br.com.ada.locasp.demo.service.PredioService;
 import jakarta.validation.Valid;
@@ -33,15 +34,17 @@ public class PredioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Predio save(@Valid @RequestBody PredioListDTO dto) {
+    public Predio save(@Valid @RequestBody PredioSaveDTO dto) {
         Predio predio = predioMapper.predioSaveDTOToPredio(dto);
         var endereco = new Endereco();
+        endereco.setCep(dto.getCep());
         predio.setEndereco(endereco);
+        predio.setNumero(dto.getNumero());
         return predioService.save(predio);
     }
 
     @PutMapping("{id}")
-    public Predio update(@PathVariable Long id, @RequestBody PredioListDTO dto) {
+    public Predio update(@PathVariable Long id, @RequestBody PredioSaveDTO dto) {
         Predio predio = Predio.builder()
                 .numero(dto.getNumero())
                 .build();
