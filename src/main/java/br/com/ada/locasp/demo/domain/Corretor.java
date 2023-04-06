@@ -18,7 +18,6 @@ import java.util.Objects;
 public class Corretor {
     @Id
     @GeneratedValue
-    @NotBlank
     private Long id;
 
     @NotBlank

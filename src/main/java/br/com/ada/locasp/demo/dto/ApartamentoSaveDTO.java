@@ -14,4 +14,10 @@ public class ApartamentoSaveDTO {
 
     @NotNull
     private ApartamentoStatus status;
+
+    @NotBlank
+    private String banheiro;
+
+    @NotBlank
+    private String quarto;
 }

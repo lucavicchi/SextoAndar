@@ -12,13 +12,11 @@ import lombok.Setter;
 @Getter
 public class PredioSaveDTO {
 
-    @NotBlank(message = "Número é um campo obrigatorio!")
-    private String numero;
-
     @NotBlank
     @Pattern(regexp = "[\\d]{5}-[\\d]{3}", message = "CEP invalido")
     private String cep;
 
     @NotBlank
+    private String numero;
     private Endereco endereco;
 }

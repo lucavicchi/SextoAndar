@@ -8,6 +8,5 @@ import lombok.Setter;
 public class PredioListDTO {
 
     private Long id;
-    private String numero;
     private Endereco endereco;
 }

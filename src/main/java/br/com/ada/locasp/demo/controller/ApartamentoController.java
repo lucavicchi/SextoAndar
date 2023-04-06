@@ -35,6 +35,8 @@ public class ApartamentoController {
         Apartamento apartamento = Apartamento.builder()
                 .numero(dto.getNumero())
                 .status(dto.getStatus())
+                .banheiro(dto.getBanheiro())
+                .quarto(dto.getQuarto())
                 .build();
         return apartamentoService.save(apartamento);
     }
@@ -44,6 +46,8 @@ public class ApartamentoController {
         Apartamento apartamento = Apartamento.builder()
                 .numero(dto.getNumero())
                 .status(dto.getStatus())
+                .banheiro(dto.getBanheiro())
+                .quarto(dto.getQuarto())
                 .build();
         return apartamentoService.update(id, apartamento);
     }
