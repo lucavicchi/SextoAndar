@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class Corretor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotBlank

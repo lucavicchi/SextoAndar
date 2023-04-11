@@ -1,6 +1,8 @@
 package br.com.ada.locasp.demo.dto;
 
 import br.com.ada.locasp.demo.domain.ApartamentoStatus;
+import br.com.ada.locasp.demo.domain.Corretor;
+import br.com.ada.locasp.demo.domain.Predio;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -20,4 +22,8 @@ public class ApartamentoSaveDTO {
 
     @NotBlank
     private String quarto;
+
+    private Long predioId;
+
+    private Long corretorId;
 }

@@ -1,6 +1,8 @@
 package br.com.ada.locasp.demo.controller;
 
 import br.com.ada.locasp.demo.domain.Apartamento;
+import br.com.ada.locasp.demo.domain.Corretor;
+import br.com.ada.locasp.demo.domain.Predio;
 import br.com.ada.locasp.demo.dto.ApartamentoSaveDTO;
 import br.com.ada.locasp.demo.mapper.ApartamentoMapper;
 import br.com.ada.locasp.demo.service.ApartamentoService;
@@ -37,6 +39,8 @@ public class ApartamentoController {
                 .status(dto.getStatus())
                 .banheiro(dto.getBanheiro())
                 .quarto(dto.getQuarto())
+                .predio(Predio.builder().id(dto.getPredioId()).build())
+                .corretor(Corretor.builder().id(dto.getCorretorId()).build())
                 .build();
         return apartamentoService.save(apartamento);
     }
