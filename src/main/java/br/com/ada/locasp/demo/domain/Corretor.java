@@ -14,7 +14,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 @Entity
-
 public class Corretor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
